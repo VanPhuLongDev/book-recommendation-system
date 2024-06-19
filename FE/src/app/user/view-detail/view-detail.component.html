@@ -1,0 +1,312 @@
+<div class="body">
+  <div class="container content-body">
+    <div class="component">
+      <div class="row product-wrapper">
+        <div class="product-wrapper-col-left">
+          <div class="product-image-thumbnail">
+            <img src="{{ book?.avatar }}" alt="" class="product-avatar-image" />
+          </div>
+
+          <div class="product-add-btn-wrapper d-flex-justify-center">
+            <button
+              class="btn btn-outline btn-add-to-cart"
+              (click)="addToCart()"
+            >
+              <i class="bi bi-cart-plus cart-icon"></i>
+              Thêm vào giỏ hàng
+            </button>
+            <button class="btn btn-buy-product">Mua ngay</button>
+          </div>
+        </div>
+        <div class="product-wrapper-col-right">
+          <div class="product-detail">
+            <div class="product-detail-name">
+              {{ book?.name }}
+            </div>
+            <div class="row product-info-wrapper">
+              <div class="product-info-col-left">
+                Nhà cung cấp:
+                <span class="color-blue">{{ book?.supplier }}</span>
+              </div>
+              <div class="product-info-col-right">
+                Tác giả:
+                <span>{{ book?.author }}</span>
+              </div>
+            </div>
+            <div class="row product-info-wrapper">
+              <div class="product-info-col-left">
+                Nhà xuất bản:
+                <span>{{ book?.publisher }}</span>
+              </div>
+              <div class="product-info-col-right">
+                Hình thức bìa:
+                <span>{{ book?.coverForm }}</span>
+              </div>
+            </div>
+            <div class="row product-detail-rate">
+              <i class="bi bi-star-fill icon-star-fill"></i>
+              <i class="bi bi-star-fill icon-star-fill"></i>
+              <i class="bi bi-star-fill icon-star-fill"></i>
+              <i class="bi bi-star-fill icon-star-fill"></i>
+              <i class="bi bi-star-fill icon-star-no-fill"></i>
+              <span>(32 đánh giá)</span>
+            </div>
+            <div class="row product-price-wrapper">
+              <div class="product-new-price">
+                {{ book?.price | currency : "VND" }}
+              </div>
+              <div class="product-old-price">
+                {{ book?.price * 1.32 | currency : "VND" }}
+              </div>
+              <div class="discount-percent-product">-32%</div>
+            </div>
+            <div class="row return-product-policy">
+              <span>Chính sách đổi trả</span>
+              <span>Đổi trả sản phẩm trong 30 ngày</span>
+              <a href="">Xem thêm</a>
+            </div>
+            <div class="product-quantity-wrapper">
+              <span>Số lượng:</span>
+              <div class="change-quantity-product">
+                <a class="btn-change-quantity" (click)="subQuantity()">
+                  <img
+                    src="/assets/image/image-sub.png"
+                    alt=""
+                    class="image-change-quantity"
+                  />
+                </a>
+                <input
+                  type="text"
+                  value="1"
+                  class="input-change-quantity fs-14"
+                />
+                <a class="btn-change-quantity" (click)="addQuantity()">
+                  <img
+                    src="/assets/image/image-add.png"
+                    alt=""
+                    class="image-change-quantity"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-slider-book
+      [books]="booksAuthor"
+      [title]="titlebooksAuthor"
+    ></app-slider-book>
+
+    <app-slider-book
+      [books]="booksRelative"
+      [title]="titlebooksRelative"
+    ></app-slider-book>
+
+    <app-slider-book
+      [books]="booksCategory"
+      [title]="titlebooksCategory"
+    ></app-slider-book>
+
+    <div class="component">
+      <div class="component-header">Thông tin sản phẩm</div>
+      <div class="component-body">
+        <div class="row" *ngFor="let info of book?.moreInformation">
+          <div class="col-3 product-info-title">
+            <span>{{ info?.key }}</span>
+          </div>
+          <div class="col-9 product-info-content">
+            <span>{{ info?.value }}</span>
+          </div>
+        </div>
+
+        <div class="color-333 fs-14 pb-8 mt-4">
+          Giá sản phẩm trên Fahasa.com đã bao gồm thuế theo luật hiện hành. Bên
+          cạnh đó, tuỳ vào loại sản phẩm, hình thức và địa chỉ giao hàng mà có
+          thể phát sinh thêm chi phí khác như Phụ phí đóng gói, phí vận chuyển,
+          phụ phí hàng cồng kềnh,...
+        </div>
+        <div class="product-description fs-14">
+          <div class="product-description-name">
+            {{ book?.name }}
+          </div>
+          <div class="product-description-content" *ngIf="isViewDesc">
+            <p *ngFor="let desc of descriptions">{{ desc }}</p>
+          </div>
+          <div class="product-description-content" *ngIf="!isViewDesc">
+            <p *ngFor="let desc of descriptions | slice : 0 : 3">{{ desc }}</p>
+            <p class="fw-bold">Xem thêm ...</p>
+          </div>
+          <div class="d-flex-justify-center">
+            <button
+              class="btn btn-view-desc"
+              (click)="changeView()"
+              *ngIf="!isViewDesc"
+            >
+              Xem thêm
+            </button>
+            <button
+              class="btn btn-view-desc"
+              (click)="changeView()"
+              *ngIf="isViewDesc"
+            >
+              Rút gọn
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="component">
+      <div class="component-header">Đánh giá sản phẩm</div>
+      <div class="component-body">
+        <div class="row">
+          <div class="col-5 product-content-rating-chart">
+            <div class="d-flex-direction-column d-flex-align-center">
+              <div>4<span>/5</span></div>
+              <div>
+                <i class="bi bi-star-fill icon-star-fill"></i>
+                <i class="bi bi-star-fill icon-star-fill"></i>
+                <i class="bi bi-star-fill icon-star-fill"></i>
+                <i class="bi bi-star-fill icon-star-fill"></i>
+                <i class="bi bi-star-fill icon-star-no-fill"></i>
+              </div>
+              <div>(0 đánh giá)</div>
+            </div>
+            <div>
+              <div class="d-flex-center-all">
+                <span>5 sao</span>
+                <div class="product-content-rating-bar"></div>
+                <span>0 %</span>
+              </div>
+              <div class="d-flex-center-all">
+                <span>4 sao</span>
+                <div class="product-content-rating-bar"></div>
+                <span>0 %</span>
+              </div>
+              <div class="d-flex-center-all">
+                <span>3 sao</span>
+                <div class="product-content-rating-bar"></div>
+                <span>0 %</span>
+              </div>
+              <div class="d-flex-center-all">
+                <span>2 sao</span>
+                <div class="product-content-rating-bar"></div>
+                <span>0 %</span>
+              </div>
+              <div class="d-flex-center-all">
+                <span>1 sao</span>
+                <div class="product-content-rating-bar"></div>
+                <span>0 %</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-7 d-flex-center-all">
+            <button
+              class="btn btn-outline btn-write-rating"
+              (click)="openModalRating()"
+            >
+              Đánh giá
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="component">
+      <div class="component-header">Đánh giá từ người dùng</div>
+      <div class="component-body">
+        <div class="row pt-8 pb-8" *ngFor="let comment of comments">
+          <div class="col-2">
+            <div class="d-flex-direction-column d-flex-align-center">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3URjWpcZfPfzAHxrU_Xms2GzfUJmvWXGjuw&s"
+                alt=""
+                style="width: 40px; height: 40px"
+              />
+
+              <div class="mt-8 mb-8">{{ comment?.username }}</div>
+
+              <div class="color-green">
+                <i class="fa-solid fa-check icon-check"></i>
+                <span>Đã mua hàng</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-10">
+            <div class="row rating-comment">
+              <app-rating-stars
+                [rating]="comment?.ratingRecommendation"
+                [readOnly]="true"
+              ></app-rating-stars>
+            </div>
+
+            <div>
+              {{ comment?.comment }}
+            </div>
+
+            <div class="mt-8">
+              Đánh giá ngày: {{ comment?.createdAt | date : "dd/MM/yyyy" }}
+            </div>
+
+            <div class="mt-8">
+              <span>
+                <i class="fa-regular fa-thumbs-up"></i>
+                Thích
+              </span>
+              <span class="ml-16">
+                <i class="fa-solid fa-circle-info"></i>
+                Báo cáo
+              </span>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-rating">
+  <div class="modal-overlay" (click)="hiddenModalRating()"></div>
+  <div class="modal-container">
+    <h3 class="modal-header m-0">Đánh giá sản phẩm</h3>
+    <div class="modal-body">
+      <app-rating-stars
+        (ratingChange)="changeRating($event)"
+      ></app-rating-stars>
+
+      <textarea
+        name="comment"
+        id="comment"
+        [(ngModel)]="comment"
+        class="form-control"
+      ></textarea>
+    </div>
+
+    <div class="modal-footer">
+      <div class="d-flex-end mt-16">
+        <button
+          class="btn btn-outline"
+          (click)="hiddenModalRating()"
+          type="button"
+        >
+          Huỷ
+        </button>
+        <button class="btn btn-fill ml-16" (click)="saveRating()">
+          Lưu đánh giá
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loading-container">
+  <div class="overlay"></div>
+  <div class="balls">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>

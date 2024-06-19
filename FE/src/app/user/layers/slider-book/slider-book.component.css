@@ -1,0 +1,121 @@
+.row-display {
+  overflow: hidden;
+  max-height: 270px;
+  flex-wrap: nowrap;
+}
+
+.product-item-wrapper {
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0,.1);
+  margin: 8px;
+  transition: left 1s;
+  position: relative;
+  left: 0;
+}
+
+.product-item-wrapper:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product-item-wrapper:hover .product-name {
+  color: var(--color-primary);
+}
+
+.product-image {
+  width: 80%;
+  height: 150px;
+  object-fit: contain;
+}
+
+.product-price > span {
+  color: rgb(255, 66, 78);
+  font-weight: 600;
+}
+
+.btn-previous-wrapper,
+.btn-next-wrapper {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.btn-previous-wrapper {
+  left: -15px;
+}
+.btn-next-wrapper {
+  right: -15px
+}
+
+.btn-previous-wrapper:hover .btn-previous {
+  border-left: 4px solid rgb(180, 180, 180);
+  border-bottom: 4px solid rgb(180, 180, 180);
+  scale: 1.1;
+}
+.btn-next-wrapper:hover .btn-next {
+  border-right: 4px solid rgb(180, 180, 180);
+  border-top: 4px solid rgb(180, 180, 180);
+  scale: 1.1;
+}
+
+.btn-previous,
+.btn-next {
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+}
+.btn-previous {
+  border-left: 3px solid #ccc;
+  border-bottom: 3px solid #ccc;
+  margin-left: 8px;
+}
+.btn-next {
+  border-right: 3px solid #ccc;
+  border-top: 3px solid #ccc;
+  margin-right: 8px;
+}
+
+.product-detail-rate {
+  margin-bottom: 12px;
+}
+.product-name {
+  margin: 4px 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  min-height: 34px;
+}
+.product-rate {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+.product-rate span {
+  margin-left: 8px;
+}
+
+.product-price-wrapper {
+  align-items: center;
+  margin-bottom: 24px;
+  margin-top: 12px;
+}
+
+
+.product-new-price {
+  font-size: 32px;
+  color: var(--color-red-dark);
+  font-weight: bold;
+}
+.product-old-price {
+  text-decoration: line-through;
+  margin: 0 12px;
+}

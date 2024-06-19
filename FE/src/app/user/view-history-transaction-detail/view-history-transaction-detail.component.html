@@ -1,0 +1,77 @@
+<div class="body">
+  <div class="container content-body">
+    <div class="row">
+      <div class="col-3">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-9">
+        <div class="row-wrapper">
+          <div class="title">
+            <i class="bi bi-journal-text" style="font-size: 17px"></i>
+            Chi tiết đơn hàng
+          </div>
+          <div class="bill-detail">
+            <div class="row">
+              Mã hoá đơn: HD000001
+            </div>
+            <div class="row">
+              <div class="col-6">
+                Tổng giá trị sản phẩm: <span class="fw-bold color-red">{{orderDetail.totalPrice | currency: 'VND'}}</span>
+              </div>
+              <div class="col-6">
+                Mã khuyến mãi: 0đ
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                Số tiền phải thanh toán: {{orderDetail.totalPrice | currency: 'VND'}}
+              </div>
+              <div class="col-6">
+                Tiền mặt: 0đ
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                Số tiền đã thanh toán: {{orderDetail.totalPrice | currency: 'VND'}}
+              </div>
+              <div class="col-6">
+                Số tiền đã hoàn trả: 0đ
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="title">Sản phẩm đã mua</div>
+
+        <div class="component" *ngFor="let orderItem of orderDetail?.orderItems">
+          <div class="row">
+            <div class="col-2">
+              <img src="{{orderItem.book.avatar}}" alt="" width="120px" height="120px" style="object-fit: contain">
+            </div>
+            <div class="col-5 d-flex-direction-column d-flex-justify-sp-between">
+              <div>Tên sách: {{orderItem.book.name}}</div>
+              <div>Tác giả: {{orderItem.book.author}}</div>
+              <div>Năm xuất bản: {{orderItem.book.yearPublisher}}</div>
+              <div>Giá tiền: <span class="color-red">{{orderItem.book.price | currency: 'VND'}}</span></div>
+            </div>
+            <div class="col-2 d-flex-direction-column d-flex-align-center">
+              <span>Số lượng</span>
+              <span class="mt-32">{{orderItem.amount}}</span>
+            </div>
+            <div class="col-2 d-flex-direction-column d-flex-align-center">
+              <span>Thành tiền</span>
+              <span class="mt-32 color-red">{{orderItem.price * orderItem.amount | currency: 'VND'}}</span>
+            </div>
+            <div class="col-1 d-flex-direction-column d-flex-align-center">
+              <span>Chi tiết</span>
+              <span class="mt-32" [routerLink]="['/detail', orderItem.book.id]">
+                <i class="bi bi-info-circle icon-view-detail"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

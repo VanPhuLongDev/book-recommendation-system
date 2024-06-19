@@ -1,0 +1,5 @@
+export const WEIGHT_RATING = {
+  RATING_CARE: 3,
+  RATING_ADD_TO_CART: 4,
+  RATING_PAYMENT: 5,
+};

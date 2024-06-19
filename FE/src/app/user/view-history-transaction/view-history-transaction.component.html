@@ -1,0 +1,53 @@
+<div class="body">
+  <div class="container content-body">
+    <div class="row">
+      <div class="col-3">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-9">
+        <div class="row-wrapper fw-bold title">
+          <i class="bi bi-journal-text" style="font-size: 17px"></i>
+          Lịch sử đơn hàng
+        </div>
+        <div
+          class="row-wrapper d-flex"
+          *ngFor="let orderDetail of orderDetails; let i = index"
+        >
+          <div class="col-left">
+            <img [src]="avatars[i]" alt="" class="image-book" />
+          </div>
+          <div
+            class="d-flex-direction-column d-flex-justify-sp-between col-right"
+            style="flex: 1"
+          >
+            <div class="text-book-name">
+              Tên sách: <span class="color-blue">{{ bookNames[i] }}</span>
+            </div>
+            <div>Hình thức thanh toán: Thanh toán trực tuyến bằng Paypal</div>
+            <div>
+              Trạng thái thanh toán: Thành công
+              <i class="bi bi-check-circle-fill color-green"></i>
+            </div>
+            <div>
+              Tổng thanh toán:
+              <span class="color-red fw-bold">{{
+                orderDetail?.totalPrice | currency : "VND"
+              }}</span>
+            </div>
+            <div class="d-flex-justify-sp-between">
+              Thời gian đặt hàng:
+              {{ orderDetail?.dateOrder | date : "HH:mm:ss dd/MM/yyyy" }}
+              <button
+                style="margin-right: 40px"
+                class="btn btn-outline"
+                [routerLink]="['/info/me/history-transaction', orderDetail.id]"
+              >
+                Xem chi tiết
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

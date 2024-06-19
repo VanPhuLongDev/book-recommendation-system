@@ -1,0 +1,43 @@
+<div class="component" *ngIf="books && books.length">
+  <div class="component-header">{{ title }} ({{ books.length }} sản phẩm)</div>
+  <div class="component-body position-relative">
+    <div class="btn-previous-wrapper" (click)="previous()">
+      <div class="btn-previous"></div>
+    </div>
+
+    <div class="row row-display">
+      <div class="col-2" *ngFor="let book of books">
+        <div
+          class="product-item-wrapper pf-8"
+          (click)="viewAnotherBook(book?.id)"
+        >
+          <div class="text-align-center">
+            <img src="{{ book?.avatar }}" alt="" class="product-image" />
+          </div>
+          <div class="product-name">
+            {{ book?.name }}
+          </div>
+          <div class="product-rate">
+            <span *ngFor="let i of numberRatings">
+              <i
+                class="bi bi-star-fill icon-star-fill"
+                *ngIf="i <= book?.numberRating"
+              ></i>
+              <i
+                class="bi bi-star-fill icon-star-no-fill"
+                *ngIf="i > book?.numberRating"
+              ></i>
+            </span>
+          </div>
+          <div class="product-price">
+            Giá: <span>{{ book?.price | currency : "VND" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-next-wrapper" (click)="next()">
+      <div class="btn-next"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.row-wrapper {
+  padding: 20px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.title {
+  font-size: 17px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+.bill-detail > .row {
+  margin: 12px 0;
+}
+.icon-view-detail {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.icon-view-detail:hover {
+  color: var(--color-primary);
+}
