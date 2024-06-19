@@ -23,22 +23,6 @@ Welcome to the Project! This repository contains the full stack of a book recomm
 - [Contributing](#contributing)
 - [License](#license)
 
-## Project Structure
-.
-├── backend-ai
-│ ├── app.py
-│ ├── models
-│ ├── requirements.txt
-│ └── README.md
-├── BE
-│ ├── src
-│ ├── pom.xml
-│ └── README.md
-└── FE
-├── src
-├── angular.json
-└── README.md
-
 
 ## Backend-AI
 
@@ -48,7 +32,7 @@ The `backend-ai` directory contains a RESTful API built with Flask. It offers bo
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/VanPhuLongDev/book-recommendation-system.git
     cd your-repo/backend-ai
     ```
 
@@ -88,7 +72,7 @@ The `BE` directory contains a RESTful API built with Spring Boot. It is a comple
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/VanPhuLongDev/book-recommendation-system.git
     cd your-repo/BE
     ```
 
@@ -124,7 +108,7 @@ The `FE` directory contains the frontend of the book sales and recommendation sy
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/VanPhuLongDev/book-recommendation-system.git
     cd your-repo/FE
     ```
 
