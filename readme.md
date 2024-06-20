@@ -2,10 +2,12 @@
 
 Welcome to the Book recommendation system! This repository contains the full stack of a book recommendation and sales system. The project is organized into three main directories:
 
+Demo: `vanphulong.id.vn`
+
 1. `backend-ai` - A RESTful API for book recommendations using AI models.
 2. `BE` - A RESTful API for the book sales system.
 3. `FE` - The frontend of the book sales and recommendation system.
-Demo: vanphulong.id.vn
+
 
 ## Table of Contents
 
